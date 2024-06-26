@@ -1,0 +1,31 @@
+<section class="container">
+    <div class="card register-form">
+      <div class="card-body">
+        <h4 class="card-title register-title">REGISTER</h4>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username">
+            <label for="username">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+            <label for="email">Email</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter password">
+            <label for="password">Password</label>
+          </div>
+          <!-- Alert message show when user enter wrong username / password -->
+          <div class="mb-3" *ngIf="isAlertMessage">
+            <p class="text-danger">{{ alertMessage }}</p>
+          </div>
+          <div class="mb-3 d-grid gap-2">
+            <!-- Button enable when all fields are filled -->
+            <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
+          </div>
+        </form>
+        <hr>
+        <button type="button" [routerLink]="['/login']" class="btn btn-outline-primary">Login</button>
+      </div>
+    </div>
+</section>
